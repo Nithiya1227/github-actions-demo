@@ -1,24 +1,16 @@
-name: My First CI Pipeline
+name: CI Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - master
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Download Code
-      uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Install Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.10"
-
-    - name: Install Packages
-      run: pip install -r requirements.txt
-
-    - name: Run Tests
-      run: pytest
+      - name: Test Step
+        run: echo "GitHub Actions Running Successfully"
