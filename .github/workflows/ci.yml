@@ -10,7 +10,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-      - name: Test Step
-        run: echo "GitHub Actions Running Successfully"
+      - name: Print Start Message
+        run: echo "CI Pipeline Started Successfully"
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Flask
+        run: pip install flask
+
+      - name: Run Python File
+        run: python app.py
+
+      - name: Print End Message
+        run: echo "CI Pipeline Completed Successfully"
